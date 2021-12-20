@@ -1,0 +1,19 @@
+.auth {
+  margin: 32px auto;
+  padding: 32px;
+  width: 40%;
+  background-color: #eee;
+  border-radius: 32px;
+  font-family: serif;
+}
+
+@media only screen and (max-width: 800px) {
+  .auth {
+    width: 80%;
+  }
+}
+@media only screen and (max-width: 320px) {
+  .auth {
+    width: 100%;
+  }
+}

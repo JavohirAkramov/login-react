@@ -1,0 +1,18 @@
+.form {
+  &__title {
+    margin: 0 0 16px 0;
+  }
+  &__link {
+    margin: 0 auto;
+    padding: 8px 16px;
+    display: block;
+    width: 80%;
+    box-sizing: border-box;
+    background-color: #44f;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+  }
+}

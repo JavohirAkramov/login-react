@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,YAAY,CAAC;EACX,aAAa,EAAE,IAAI;CACpB;;AACD,AAAA,eAAe,CAAC;EACd,YAAY,EAAE,GAAG;EACjB,OAAO,EAAE,YAAY;EACrB,QAAQ,EAAE,QAAQ;EAClB,gBAAgB,EAAE,IAAI;CACvB",
+    "sources": [
+        "InputCheckbox.scss"
+    ],
+    "names": [],
+    "file": "InputCheckbox.css"
+}

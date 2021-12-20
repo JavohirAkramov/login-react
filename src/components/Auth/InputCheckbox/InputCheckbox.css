@@ -1,0 +1,11 @@
+.form__admin {
+  margin-bottom: 16px;
+}
+
+.form__checkbox {
+  margin-right: 8px;
+  display: inline-block;
+  position: relative;
+  background-color: #44f;
+}
+/*# sourceMappingURL=InputCheckbox.css.map */

@@ -1,0 +1,20 @@
+.form__group {
+  margin-bottom: 16px;
+}
+
+.form__group .form__label {
+  margin-bottom: 8px;
+  display: block;
+}
+
+.form__group .form__input {
+  display: block;
+  padding: 8px 16px;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: #eee;
+  border: 1px solid #bbb;
+  border-radius: 8px;
+}
+/*# sourceMappingURL=Input.css.map */
