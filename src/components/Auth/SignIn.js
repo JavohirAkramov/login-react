@@ -1,13 +1,44 @@
-import { useState, React } from "react";
-import "./SignIn.css";
-import Input from "../Input/Input";
-import InputCheckbox from "../InputCheckbox/InputCheckbox";
-import { Link, useNavigate, Navigate } from "react-router-dom";
-import Admin from "../../Admin/Admin";
+import { React, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Input from "./Input";
+import InputCheckbox from "./InputCheckbox";
+import styled from "styled-components";
+
+const FormTitle = styled.h1`
+  margin: 0 0 16px 0;
+`;
+
+const FormLink = styled.button`
+  margin: 0 auto;
+  padding: 8px 16px;
+  display: block;
+  width: 80%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color: #44f;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #fff;
+  text-align: center;
+`;
+const Form = styled.form`
+  margin: 32px auto;
+  padding: 32px;
+  width: 40%;
+  background-color: #eee;
+  border-radius: 32px;
+  font-family: serif;
+  @media only screen and (max-width: 800px) {
+    width: 80%;
+  }
+  @media only screen and (max-width: 320px) {
+    width: 100%;
+  }
+`;
 
 function SignIn() {
   const navigate = useNavigate();
-  const [isSignedUp, setSignedUp] = useState(false);
   const [values, setValues] = useState({
     login: "",
     password: "",
@@ -21,17 +52,18 @@ function SignIn() {
 
   function handleInput(name, value) {
     setValues({ ...values, [name]: value });
-    console.log({ ...values, [name]: value });
   }
-  let handleSignIn = (evt) => {
+  function handleSignIn(evt) {
     evt.preventDefault();
     if (local.login === values.login && local.password === values.password) {
+      localStorage.setItem("isAuth", "true");
       values.isAdmin ? navigate("/admin") : navigate("/home");
     } else alert("invalid login or password");
-  };
+  }
+
   return (
-    <form onSubmit={handleSignIn} className="form">
-      <h1 className="form__title">Sign in</h1>
+    <Form onSubmit={handleSignIn}>
+      <FormTitle>Sign in</FormTitle>
       <Input
         name={"login"}
         label={"Login"}
@@ -49,10 +81,10 @@ function SignIn() {
         label={"admin"}
         handleInput={handleInput}
       />
-      <button className="form__link" onClick={handleSignIn}>
+      <FormLink onClick={handleSignIn}>
         Sign in {values.isAdmin ? "as admin" : null}
-      </button>
-    </form>
+      </FormLink>
+    </Form>
   );
 }
 

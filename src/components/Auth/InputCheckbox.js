@@ -1,17 +1,26 @@
 import React from "react";
-import "./InputCheckbox.css";
+import styled from "styled-components";
+
+const FormAdmin = styled.div`
+  margin-bottom: 16px;
+`;
+const FormInputCheckbox = styled.input`
+  margin-right: 8px;
+  display: inline-block;
+  position: relative;
+  background-color: #44f;
+`;
 
 function InputCheckbox(props) {
   return (
-    <div className="form__admin">
-      <input
+    <FormAdmin>
+      <FormInputCheckbox
         type="checkbox"
-        className="form__checkbox"
         name={props.name}
         onClick={(e) => props.handleInput(props.name, e.target.checked)}
       />
       <label htmlFor={props.name}>{props.label}</label>
-    </div>
+    </FormAdmin>
   );
 }
 

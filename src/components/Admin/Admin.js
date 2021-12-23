@@ -1,9 +1,14 @@
 import React from "react";
+import LogOut from "../Auth/LogOut";
 
 function Admin() {
   return (
     <div>
-      <h1>Admin page</h1>
+      <LogOut />
+      <h1>
+        Admin page
+        asdfasdjfklasdhflkjasdlkfjaklsdjfklsjdfjsakldjflsajfkasdfasdjfklasdhflkjasdlkfjaklsdjfklsjdfjsakldjflsajfkasdfasdjfklasdhflkjasdlkfjaklsdjfklsjdfjsakldjflsajfkasdfasdjfklasdhflkjasdlkfjaklsdjfklsjdfjsakldjflsajfk{" "}
+      </h1>
     </div>
   );
 }
