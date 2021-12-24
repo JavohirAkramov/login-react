@@ -1,11 +1,23 @@
 import { React, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Input from "./Input";
 import InputCheckbox from "./InputCheckbox";
 import styled from "styled-components";
 
 const FormTitle = styled.h1`
   margin: 0 0 16px 0;
+`;
+const FormInner = styled.div`
+  margin-bottom: 16px;
+`;
+const FormDesc = styled.span`
+  color: #999;
+  margin-right: 16px;
+`;
+const FormLinkContainer = styled.div`
+  display: inline-block;
+  text-decoration: none;
+  color: #44f;
 `;
 
 const FormLink = styled.button`
@@ -37,7 +49,7 @@ const Form = styled.form`
   }
 `;
 
-function SignIn() {
+function SignIn(props) {
   const navigate = useNavigate();
   const [values, setValues] = useState({
     login: "",
@@ -55,36 +67,58 @@ function SignIn() {
   }
   function handleSignIn(evt) {
     evt.preventDefault();
-    if (local.login === values.login && local.password === values.password) {
+    if (local.login == values.login && local.password == values.password) {
       localStorage.setItem("isAuth", "true");
-      values.isAdmin ? navigate("/admin") : navigate("/home");
+      values.isAdmin
+        ? localStorage.getItem("isAdmin") == "true"
+          ? navigate("/admin")
+          : navigate("/home")
+        : navigate("/home");
     } else alert("invalid login or password");
   }
 
   return (
-    <Form onSubmit={handleSignIn}>
-      <FormTitle>Sign in</FormTitle>
-      <Input
-        name={"login"}
-        label={"Login"}
-        type={"text"}
-        handleInput={handleInput}
-      />
-      <Input
-        name={"password"}
-        label={"Password"}
-        type={"password"}
-        handleInput={handleInput}
-      />
-      <InputCheckbox
-        name={"isAdmin"}
-        label={"admin"}
-        handleInput={handleInput}
-      />
-      <FormLink onClick={handleSignIn}>
-        Sign in {values.isAdmin ? "as admin" : null}
-      </FormLink>
-    </Form>
+    <>
+      {localStorage.getItem("isAuth") === "true" ? (
+        !localStorage.getItem("isAdmin") === "true" ? (
+          navigate("/admin")
+        ) : (
+          navigate("/home")
+        )
+      ) : (
+        <Form onSubmit={handleSignIn}>
+          <FormTitle>Sign in</FormTitle>
+          <FormInner>
+            <FormDesc>Haven't you got an account?</FormDesc>
+            <FormLinkContainer>
+              <Link style={{ textDecoration: "none", color: "#44f" }} to="/">
+                Sign up
+              </Link>
+            </FormLinkContainer>
+          </FormInner>
+          <Input
+            name={"login"}
+            label={"Login"}
+            type={"text"}
+            handleInput={handleInput}
+          />
+          <Input
+            name={"password"}
+            label={"Password"}
+            type={"password"}
+            handleInput={handleInput}
+          />
+          <InputCheckbox
+            name={"isAdmin"}
+            label={"admin"}
+            handleInput={handleInput}
+          />
+          <FormLink onClick={handleSignIn}>
+            Sign in {values.isAdmin ? "as admin" : null}
+          </FormLink>
+        </Form>
+      )}
+    </>
   );
 }
 

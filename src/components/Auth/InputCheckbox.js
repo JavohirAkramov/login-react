@@ -16,10 +16,10 @@ function InputCheckbox(props) {
     <FormAdmin>
       <FormInputCheckbox
         type="checkbox"
-        name={props.name}
+        id={props.label}
         onClick={(e) => props.handleInput(props.name, e.target.checked)}
       />
-      <label htmlFor={props.name}>{props.label}</label>
+      <label htmlFor={props.label}>{props.label}</label>
     </FormAdmin>
   );
 }

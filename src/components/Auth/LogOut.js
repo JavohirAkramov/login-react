@@ -19,8 +19,8 @@ function LogOut() {
   const navigate = useNavigate();
   function handleLogOut() {
     if (window.confirm("Are you sure you want to log out?")) {
-      localStorage.setItem("isAuth", false);
-      localStorage.setItem("isAdmin", false);
+      localStorage.removeItem("isAuth");
+      localStorage.removeItem("isAdmin");
       localStorage.removeItem("firstName");
       localStorage.removeItem("lastName");
       localStorage.removeItem("login");

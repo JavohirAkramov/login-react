@@ -13,13 +13,13 @@ function App() {
     setAuth(localStorage.getItem("isAuth"));
     setAdmin(localStorage.getItem("isAdmin"));
 
-    localStorage.getItem("isAuth") ? setAuth(true) : setAuth(false);
-  }, []);
+    localStorage.getItem("isAuth") === "true" ? setAuth(true) : setAuth(false);
+  });
 
   return (
     <BrowserRouter>
       <Routes>
-        {!isAuth ? <Route path="/signin" element={<SignIn />} /> : null}
+        <Route path="/signin" element={<SignIn />} />
         <Route
           path="/home"
           element={
